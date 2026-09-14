@@ -3,7 +3,7 @@ version: "3.8"
 services:
   teamspeak:
     image: teamspeaksystems/teamspeak6-server:latest
-    container_name: ts6-local
+    container_name: ultimates-teamspeak6
     restart: unless-stopped
     ports:
       - "9987:9987/udp" # Porta principal de Voz
@@ -15,4 +15,4 @@ services:
 
 volumes:
   ts-data:
-    name: ts6-data-local
+    name: ultimates-teamspeak6-data
