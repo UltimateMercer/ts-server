@@ -4,20 +4,15 @@ primary_region = 'iad'
 [build]
   dockerfile = 'Dockerfile'
 
-# Configuração de portas para o TeamSpeak (UDP para voz e TCP para arquivos/query)
 [[services]]
   protocol = 'udp'
   internal_port = 9987
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
 
   [[services.ports]]
     port = 9987
-
-[[services]]
-  protocol = 'tcp'
-  internal_port = 30033
-
-  [[services.ports]]
-    port = 30033
 
 [[vm]]
   memory = '1gb'
