@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  teamspeak:
+    image: teamspeaksystems/teamspeak6-server:latest
+    container_name: ts6-local
+    restart: unless-stopped
+    ports:
+      - "9987:9987/udp" # Porta principal de Voz
+      - "30033:30033/tcp" # Porta de Transferência de Arquivos
+    environment:
+      - TSSERVER_LICENSE_ACCEPTED=accept
+    volumes:
+      - ts-data:/var/tsserver
+
+volumes:
+  ts-data:
+    name: ts6-data-local
