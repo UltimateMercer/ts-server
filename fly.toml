@@ -1,20 +1,23 @@
-# fly.toml app configuration file generated for ultimate-ts-server on 2026-09-14T21:27:55Z
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'ultimate-ts-server'
 primary_region = 'iad'
 
 [build]
+  dockerfile = 'Dockerfile'
 
-[http_service]
+# Configuração de portas para o TeamSpeak (UDP para voz e TCP para arquivos/query)
+[[services]]
+  protocol = 'udp'
   internal_port = 9987
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+
+  [[services.ports]]
+    port = 9987
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 30033
+
+  [[services.ports]]
+    port = 30033
 
 [[vm]]
   memory = '1gb'
